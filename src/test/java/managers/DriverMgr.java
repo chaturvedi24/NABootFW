@@ -10,7 +10,7 @@ public class DriverMgr {
     static WebDriver driver;
 
     public static WebDriver getDriver() {
-        String browserNm = System.getProperty("browser");
+        String browserNm = System.getProperty("browser") == null? "chrome": System.getProperty("browser");
         if (driver== null) {
             switch (browserNm) {
                 case "chrome" -> {
