@@ -14,6 +14,27 @@ public class ControlGroupPage {
     @FindBy(xpath = "//div[@class='widget']/h1")
     WebElement header;
 
+    @FindBy(css = "#horizontal-spinner")
+    WebElement numCars;
+
+    @FindBy(css = "div.ui-helper-clearfix>span>a.ui-spinner-down")
+    WebElement down;
+
+    @FindBy(css = "div.ui-helper-clearfix>span>a.ui-spinner-up")
+    WebElement up;
+
+    public void clickUp() {
+        up.click();
+    }
+
+    public void clickdown() {
+        down.click();
+    }
+
+    public String getNumCars () {
+        return numCars.getAttribute("aria-valuenow");
+    }
+
     public String headerText() {
         return header.getText();
     }

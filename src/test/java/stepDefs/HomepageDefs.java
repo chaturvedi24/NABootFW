@@ -10,7 +10,7 @@ import pageObjects.JQueryHPage;
 public class HomepageDefs {
 
     WebDriver driver;
-    String baseUrl;
+    //String baseUrl; --> moved to @Before hook
     JQueryHPage jQueryHPage;
     DatepickerPage datepickerPage;
 
@@ -18,12 +18,12 @@ public class HomepageDefs {
     @Given("I am on the jquery homepage")
     public void i_am_on_the_jquery_homepage() {
         System.out.println("inside given");
-        baseUrl = "https://jqueryui.com/";
+       // baseUrl = "https://jqueryui.com/"; --> moved to @Before hook
         driver = DriverMgr.getDriver();
         jQueryHPage = new JQueryHPage(driver);
         datepickerPage = new DatepickerPage(driver);
-        driver.manage().window().maximize();
-        driver.get(baseUrl);
+      //  driver.manage().window().maximize(); --> moved to @Before hook
+      //  driver.get(baseUrl); --> moved to @Before hook
         Assert.assertEquals("failed", "https://jqueryui.com/", driver.getCurrentUrl());
     }
 
@@ -31,12 +31,14 @@ public class HomepageDefs {
     public void i_click_on_controlgroup() {
         // Write code here that turns the phrase above into concrete actions
         System.out.println("inside when");
+        jQueryHPage.clickCtrlGroup();
     }
 
     @Then("I land on the controlgroup page")
     public void i_land_on_the_controlgroup_page() {
         // Write code here that turns the phrase above into concrete actions
         System.out.println("inside then");
+        Assert.assertEquals("failed", "https://jqueryui.com/controlgroup/", driver.getCurrentUrl());
     }
 
     @When("I click on datepicker")
