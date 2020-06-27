@@ -2,7 +2,7 @@ package stepDefs;
 
 import io.cucumber.java.en.Given;
 import managers.DriverMgr;
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 import pageObjects.ControlGroupPage;
 
 public class ControlgroupDefs {
@@ -10,7 +10,7 @@ public class ControlgroupDefs {
 
     @Given("I validate header")
     public void i_validate_header() {
-        Assert.assertEquals(controlGroupPage.headerText(), "Controlgroup");
+        Assertions.assertEquals(controlGroupPage.headerText(), "Controlgroup");
         System.out.println("completed I validate header");
     }
 
@@ -27,7 +27,7 @@ public class ControlgroupDefs {
 
     @Given("^I validate that number of cars is (\\d+)$")
     public void i_validate_cars(int numCars) {
-        Assert.assertEquals(String.valueOf(numCars), controlGroupPage.getNumCars());
+        Assertions.assertEquals(String.valueOf(numCars), controlGroupPage.getNumCars());
         System.out.println("completed I validate number of cars as "+numCars);
     }
 }

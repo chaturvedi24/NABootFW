@@ -22,6 +22,13 @@ public class JQueryHPage {
     @FindBy(className = "demo-frame")
     WebElement frame;
 
+    @FindBy(xpath = "//a[text()='Checkboxradio']")
+    WebElement checkboxradio;
+
+    public void clickCheckboxRadio() {
+        checkboxradio.click();
+    }
+
     public void clickCtrlGroup () {
         controlGroup.click();
     }

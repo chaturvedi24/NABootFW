@@ -23,11 +23,11 @@
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-        <dependency>
+        <!--dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
-        </dependency>
+        </dependency-->
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -60,6 +60,28 @@
                     <target>14</target>
                 </configuration>
             </plugin>
+            <plugin>
+            <groupId>net.masterthought</groupId>
+            <artifactId>maven-cucumber-reporting</artifactId>
+            <version>5.3.0</version>
+            <executions>
+                <execution>
+                    <id>execution</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                    <configuration>
+                        <projectName>${project.artifactId}</projectName>
+                        <outputDirectory>${project.build.directory}</outputDirectory>
+                        <inputDirectory>${project.build.directory}</inputDirectory>
+                        <jsonFiles>
+                            <param>**/*.json</param>
+                        </jsonFiles>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
         </plugins>
     </build>
 
