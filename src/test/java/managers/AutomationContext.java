@@ -1,12 +1,14 @@
 package managers;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AutomationContext {
 
-    public AutomationContext(ScenarioMgr scenarioMgr) {
+    public AutomationContext(ScenarioMgr scenarioMgr) throws IOException {
         this.scenarioMgr = scenarioMgr;
+        configReader = new ConfigReader(System.getProperty("app"));
     }
 
     public ScenarioMgr getScenarioMgr() {
@@ -14,6 +16,12 @@ public class AutomationContext {
     }
 
     ScenarioMgr scenarioMgr;
+    ConfigReader configReader;
+
+    public ConfigReader getConfigReader() {
+        return configReader;
+    }
+
     private Map<String, String> contextMap = new HashMap<>();
 
     public String getContextMap(String key) {
