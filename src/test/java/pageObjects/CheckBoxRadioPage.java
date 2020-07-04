@@ -54,4 +54,25 @@ public class CheckBoxRadioPage {
         }
         return isRadioSelected;
     }
+
+    public void selectRadioOnly(String city) throws InterruptedException {
+        for (WebElement eachRadio: allRadios1) {
+            if(eachRadio.getText().equals(city)) {
+                eachRadio.click();
+                break;
+            }
+        }
+    }
+
+    public boolean validateSelection(String button) throws InterruptedException {
+        boolean isRadioSelected = false;
+        for (WebElement eachRadio: allRadios1) {
+            if(eachRadio.getText().equals(button)) {
+                isRadioSelected = eachRadio.findElement(By.xpath("following-sibling::input[1]")).isSelected();
+                break;
+            }
+        }
+        return isRadioSelected;
+    }
+
 }

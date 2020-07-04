@@ -1,6 +1,6 @@
 Feature: Checkboxradio page tests
 
-  @checksradioscount
+  @checksradioscount @checkb
   Scenario: validate number of checkboxes and radios
     Given I am on the jquery homepage
     When I click on checkboxradio
@@ -10,7 +10,7 @@ Feature: Checkboxradio page tests
     Then I validate number of ratings is 4
     Then I validate number of bedTypes is 4
 
-  @radiosselection
+  @radiosselection @checkb
   Scenario: perform radio button selection
     Given I am on the jquery homepage
     When I click on checkboxradio

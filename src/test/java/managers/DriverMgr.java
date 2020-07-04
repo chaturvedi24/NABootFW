@@ -10,23 +10,27 @@ public class DriverMgr {
     static WebDriver driver;
 
     public static WebDriver getDriver() {
-        String browserNm = System.getProperty("browser") == null? "chrome": System.getProperty("browser");
-        if (driver== null) {
-            switch (browserNm) {
-                case "chrome" -> {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                }
-                case "firefox" -> {
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                }
-                default -> {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                }
-            }
+        if (driver == null) {
+            initDriver();
         }
         return driver;
+    }
+
+    public static void initDriver() {
+        String browserNm = System.getProperty("browser") == null ? "chrome" : System.getProperty("browser");
+        switch (browserNm) {
+            case "chrome" -> {
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+            }
+            case "firefox" -> {
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+            }
+            default -> {
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+            }
+        }
     }
 }
